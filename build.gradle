@@ -1,0 +1,40 @@
+group 'com.github.dolphineor'
+version '0.1.0'
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    compileJava.options.encoding = 'UTF-8'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    ext {
+        luceneVersion = '3.6.2'
+    }
+}
+
+dependencies {
+    compile "org.apache.lucene:lucene-core:$luceneVersion"
+    compile "org.apache.lucene:lucene-grouping:$luceneVersion"
+    compile "org.apache.lucene:lucene-queryparser:$luceneVersion"
+    compile "org.apache.lucene:lucene-memory:$luceneVersion"
+    compile "org.apache.lucene:lucene-highlighter:$luceneVersion"
+    compile "org.apache.lucene:lucene-queries:$luceneVersion"
+    compile "org.apache.lucene:lucene-analyzers:$luceneVersion"
+    compile "org.apache.lucene:lucene-demo:$luceneVersion"
+    compile 'com.google.guava:guava:19.0'
+
+    testCompile 'junit:junit:4.12'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.12'
+}
